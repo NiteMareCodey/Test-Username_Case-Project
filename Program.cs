@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Test_Username_Case_Project
 {
@@ -12,54 +13,72 @@ namespace Test_Username_Case_Project
             Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Notes";
 
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
+            while (true)
+            {
+                ReadCommand();
+            }
+           
+        }
+        private static void ReadCommand()
+        {
+            Console.Write(Directory.GetDirectoryRoot(NoteDirectory));
+            string Command = Console.ReadLine();
+
+            switch (Command.ToLower())
+            {
+                case "new":
+                    NewNote();
+                    //Main(null);
+                    break;
+                case "exit":
+                    Exit();
+                    break;
+                default:
+                    CommandsAvailable();
+                    //Main(null);
+                    break;
+                case "edit":
+                    EditNote();
+                    //  Main(null);
+                    break;
+                case "login":
+                    DoSomething();
+                    break;
+            } 
+            
+        }
+
+        static void DoSomething()
+        {
+            Console.WriteLine("Enter Username:");
+            string username = Console.ReadLine();
+            Console.Write("Username is:" + username);
+            //Console.Readline();
+            Console.ReadKey();
 
         }
-    }   private static void ReadCommand()
-    {
-        Console.Write(Directory.GetDirectoryRoot(NoteDirectory));
-        string Command = Console.ReadLine();
-
-        switch (Command.ToLower()
+            #region Command Response Methods
+            private static void NewNote()
         {
-            case "new":
-                NewNote();
-                //Main(null);
-                break;
-            case "exit":
-                Exit();
-                break;
-            default:
-                CommandsAvailable();
-                //Main(null);
-                break;
-            case "edit":
-                EditNote();
-                //  Main(null);
-                break;
+            Console.WriteLine("in NewNote");
         }
-    }
 
-    #region Command Response Methods
-    private static void NewNote()
-    {
-        Console.WriteLine("in NewNote");
-    }
+        private static void CommandsAvailable()
+        {
+            Console.WriteLine("Invalid Option");
+        }
 
-    private static void CommandsAvailable()
-    {
-        Console.WriteLine("Invalid Option");
-    }
+        private static void Exit()
+        {
+            Environment.Exit(0);
+        }
 
-    private static void Exit()
-    {
-        Environment.Exit(0);
+        private static void EditNote()
+        {
+            Console.WriteLine("CHANGING NOTE");
+        }
+        #endregion
     }
-
-    private static void EditNote()
-    {
-        Console.WriteLine("CHANGING NOTE");
-    }
-# endregion
 }
