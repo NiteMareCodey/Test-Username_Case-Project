@@ -1,25 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.IO;
+using System.Xml;
+using System.Xml.Linq;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
 
-namespace Test_Username_Case_Project
+namespace NotesCommandLine
 {
     class Program
     {
         private static string NoteDirectory =
-            Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Notes";
-
+            Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Notes\";
 
         private static void Main(string[] args)
         {
             while (true)
             {
                 ReadCommand();
+
             }
-           
+
         }
         private static void ReadCommand()
         {
@@ -30,7 +34,7 @@ namespace Test_Username_Case_Project
             {
                 case "new":
                     NewNote();
-                    //Main(null);
+//                    Main(null);
                     break;
                 case "exit":
                     Exit();
@@ -41,26 +45,13 @@ namespace Test_Username_Case_Project
                     break;
                 case "edit":
                     EditNote();
-                    //  Main(null);
+                  //  Main(null);
                     break;
-                case "login":
-                    DoSomething();
-                    break;
-            } 
-            
+            }
         }
-
-        static void DoSomething()
-        {
-            Console.WriteLine("Enter Username:");
-            string username = Console.ReadLine();
-            Console.Write("Username is:" + username);
-            //Console.Readline();
-            Console.ReadKey();
-
-        }
-            #region Command Response Methods
-            private static void NewNote()
+        
+        #region Command Response Methods
+        private static void NewNote()
         {
             Console.WriteLine("in NewNote");
         }
