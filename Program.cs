@@ -20,7 +20,7 @@ namespace NotesCommandLine
         {
             while (true)
             {
-                ReadCommand();
+                ReadCommand(); 
 
             }
 
@@ -41,15 +41,30 @@ namespace NotesCommandLine
                     break;
                 default:
                     CommandsAvailable();
-                    //Main(null);
+                    Main(null);
                     break;
                 case "edit":
                     EditNote();
-                  //  Main(null);
+                    Main(null);
                     break;
+                case "login":
+                    DoSomething();
+                    break;
+
             }
         }
-        
+
+        static void DoSomething()
+        {
+            Console.WriteLine("Enter Username:");
+            string username = Console.ReadLine();
+            Console.Write("Username is:" + username);
+            //Console.Readline();
+            Console.ReadKey();
+
+        }
+
+
         #region Command Response Methods
         private static void NewNote()
         {
